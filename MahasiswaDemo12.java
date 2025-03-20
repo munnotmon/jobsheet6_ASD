@@ -1,23 +1,33 @@
+import java.util.Scanner;
 public class MahasiswaDemo12 {
     public static void main(String[] args) {
-        MahasiswaBerprestasi12 list = new MahasiswaBerprestasi12();
-        Mahasiswa12 m1 = new Mahasiswa12("123", "Zidan", "2A", 3.2);
-        Mahasiswa12 m2 = new Mahasiswa12("124", "Ayu", "2A", 3.5);
-        Mahasiswa12 m3 = new Mahasiswa12("125", "Sofi", "2A", 3.1);
-        Mahasiswa12 m4 = new Mahasiswa12("126", "Sita", "2A", 3.9);
-        Mahasiswa12 m5 = new Mahasiswa12("127", "Miki", "2A", 3.7);
+        Scanner sc12 = new Scanner(System.in);
+        System.out.print("\nMasukkan jumlah mahasiswa: ");
+        int jumlah = sc12.nextInt();
+        sc12.nextLine();
 
-        list.tambah(m1);
-        list.tambah(m2);
-        list.tambah(m3);
-        list.tambah(m4);
-        list.tambah(m5);
+        MahasiswaBerprestasi12 list = new MahasiswaBerprestasi12(jumlah);
 
-        System.out.println("\nData mahasiswa sebelum sorting :");
+        for (int i = 0; i < jumlah; i++) {
+            System.out.println("\nMasukkan data mahasiswa ke-" + (i + 1));
+            System.out.print("NIM: ");
+            String nim = sc12.nextLine();
+            System.out.print("Nama: ");
+            String nama = sc12.nextLine();
+            System.out.print("Kelas: ");
+            String kelas = sc12.nextLine();
+            System.out.print("IPK: ");
+            double ipk = sc12.nextDouble();
+            sc12.nextLine();
+
+            list.tambah(new Mahasiswa12(nim, nama, kelas, ipk));
+        }
+
+        System.out.println("\nData mahasiswa sebelum sorting:");
         list.tampil();
 
-        System.out.println("\nData mahasiswa setelah sorting bedasarkan IPK (DESC) :");
-        list.bubblesort();
+        System.out.println("\nData mahasiswa setelah sorting berdasarkan IPK (DESC):");
+        list.bubbleSort();
         list.tampil();
     }
 }
